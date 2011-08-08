@@ -20,7 +20,7 @@ Then add the `Midgard` namespace to the `app/autoload.php`:
 
 And enable this bundle in your Kernel:
 
-    new Midgard\MvcConnectionBundle\MidgardConnectionBundle()
+    new Midgard\ConnectionBundle\MidgardConnectionBundle()
 
 ## Configuration
 

@@ -42,13 +42,13 @@ class InitializeRepositoryCommand extends ContainerAwareCommand
 
                 if (!\midgard_storage::update_class_storage($type))
                 {
-                    $output->writeLine('Could not update ' . $type . ' tables in test database');
+                    $output->writeln('Could not update ' . $type . ' tables in test database');
                 }
                 continue;
             }
             if (!\midgard_storage::create_class_storage($type))
             {
-                $output->writeLine('Could not create ' . $type . ' tables in test database');
+                $output->writeln('Could not create ' . $type . ' tables in test database');
             }
         }
 
