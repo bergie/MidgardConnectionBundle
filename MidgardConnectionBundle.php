@@ -8,6 +8,9 @@ class MidgardConnectionBundle extends Bundle
     public function boot()
     {
         $setup = $this->container->getParameter('midgard.connection.config');
+        if (!$setup) {
+            throw new \RuntimeException('Failed to open Midgard2 connection: no configuration defined');
+        }
 
         $config = new \midgard_config();
         $config->dbtype = $setup['type'];
