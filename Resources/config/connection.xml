@@ -8,9 +8,18 @@
         <parameter key="midgard.connection.config" />
     </parameters>
 
-    <!--<services>
-        <service id="midgard.connection.kernel_listener.request" class="Midgard\ConnectionBundle\EventListener\RequestListener">
-            <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest" />
+    <services>
+        <!--
+        <service id="security.authentication.provider.midgard" class="Midgard\ConnectionBundle\Security\Authentication\Provider\AuthenticationProvider" public="true" abstract="false">
+            <argument />
         </service>
-    </services>-->
+
+        <service id="security.authentication.listener.midgard" class="Midgard\ConnectionBundle\Security\Firewall\AuthenticationListener">
+            <argument type="service" id="security.context" />
+            <argument type="service" id="security.authentication.manager" />
+        </service>
+        -->
+        <service id="security.user.provider.midgard" class="Midgard\ConnectionBundle\Security\User\UserProvider">
+        </service>
+    </services>
 </container>
