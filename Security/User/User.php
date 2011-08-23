@@ -57,6 +57,11 @@ class User implements UserInterface
         return $this->user;
     }
 
+    public function __sleep()
+    {
+        return array('login');
+    }
+
     public function equals(UserInterface $user)
     {
         if (!$user instanceof User) {
