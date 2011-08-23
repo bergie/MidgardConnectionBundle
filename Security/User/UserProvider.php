@@ -10,11 +10,13 @@ class UserProvider implements UserProviderInterface
 {
     public function loadUserByUsername($username)
     {
-        $user = $this->getMidgardUser($username);
-        if (!$user) {
+        $mgdUser = $this->getMidgardUser($username);
+        if (!$mgdUser) {
             throw new UsernameNotFoundException("User {$username} not found");
         }
-        return new User($user);
+        $user = new User($username);
+        $user->setMidgardUser($mgdUser);
+        return $user;
     }
 
     private function getMidgardUser($username)
@@ -35,7 +37,8 @@ class UserProvider implements UserProviderInterface
 
     public function refreshUser(UserInterface $user)
     {
-        return $this->loadUserByUsername($user->getUsername());
+        $user->setMidgardUser($this->getMidgardUser($user->getUsername()));
+        return $user;
     }
 
     public function supportsClass($class)

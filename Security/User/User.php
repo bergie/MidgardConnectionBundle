@@ -11,10 +11,9 @@ class User implements UserInterface
     private $user = null;
     private $login = '';
 
-    public function __construct(\midgard_user $user)
+    public function __construct($username)
     {
-        $this->user = $user;
-        $this->login = $user->login;
+        $this->login = $username;
     }
 
     public function getRoles()
@@ -55,6 +54,11 @@ class User implements UserInterface
     public function getMidgardUser()
     {
         return $this->user;
+    }
+
+    public function setMidgardUser(\midgard_user $user)
+    {
+        $this->user = $user;
     }
 
     public function __sleep()
