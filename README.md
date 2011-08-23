@@ -35,6 +35,20 @@ To have a working Midgard2 repository connection, you need to supply this bundle
         blobdir: "%kernel.root_dir%/blobs"
         sharedir: "%kernel.root_dir%/share"
 
+## Using Midgard user database
+
+The Midgard Connection Bundle provides the necessary services for using the Midgard database for users and authentication. To do this, you need to edit your `security.yml` configuration. You need at least the following:
+
+    security:
+        encoders:
+            Midgard\ConnectionBundle\Security\User\User: plaintext
+
+        providers:
+            midgard_provider:
+                id: security.user.provider.midgard
+
+Normal Symfony2 access control and firewall rules apply. Userlevels of Midgard user records will be mapped to `ROLE_USER` and `ROLE_ADMIN` accordingly.
+
 ## Database initialization
 
 If you need to initialize your Midgard2 database, there is a command for this. Just run:
