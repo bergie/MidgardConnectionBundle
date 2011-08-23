@@ -22,6 +22,7 @@ class UserProvider implements UserProviderInterface
         $tokens = array(
             'login' => $username,
             'active' => true,
+            // TODO: Match this to the Encoder set for Midgard user objects in SF2 config
             'authtype' => 'Plaintext',
         );
 
